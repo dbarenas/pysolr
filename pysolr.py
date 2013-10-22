@@ -10,6 +10,7 @@ import requests
 import time
 import types
 import ast
+import base64
 
 try:
     # Prefer lxml, if installed.
@@ -274,7 +275,7 @@ class Solr(object):
         log_body = body
 
         if headers is None:
-            headers = {}
+            headers = {"Authorization", "Basic YWRtaW46bXkxMjMwOTg="}
 
         if log_body is None:
             log_body = ''
@@ -300,6 +301,7 @@ class Solr(object):
 
             if not 'content-type' in [key.lower() for key in headers.keys()]:
                 headers['Content-type'] = 'application/xml; charset=UTF-8'
+                headers['Authorization'] = 'Basic; YWRtaW46bXkxMjMwOTg='
 
             resp = requests_method(url, data=bytes_body, headers=headers, files=files,
                                    timeout=self.timeout)
@@ -387,7 +389,7 @@ class Solr(object):
         if clean_ctrl_chars:
             message = sanitize(message)
 
-        return self._send_request('post', path, message, {'Content-type': 'text/xml; charset=utf-8'})
+        return self._send_request('post', path, message, {'Content-type': 'text/xml; charset=utf-8','Authorization': 'Basic TREYWRtaW34kxMjMwO65gsdf='})
 
     def _extract_error(self, resp):
         """
