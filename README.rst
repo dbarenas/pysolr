@@ -23,7 +23,7 @@ Features
 * `"More Like This" <http://wiki.apache.org/solr/MoreLikeThis>`_ support (if set up in Solr).
 * `Spelling correction <http://wiki.apache.org/solr/SpellCheckComponent>`_ (if set up in Solr).
 * Timeout support.
-
+* Now you can use a authentication from HTTP search the header
 
 Requirements
 ============
